@@ -94,3 +94,14 @@ jacocoTestReport {
 		html.enabled true
 	}
 }
+
+liquibase {
+	activities {
+		main {
+			changeLogFile 'src/main/resources/db/changelog/changelog-main.xml'
+			url 'hibernate:spring:com.bank.management.challenge.infrastructure.entities?dialect=org.hibernate.dialect.PostgreSQL10Dialect&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
+			databaseClass 'liquibase.ext.hibernate.database.HibernateSpringPackageDatabase'
+			driver 'liquibase.ext.hibernate.database.connection.HibernateDriver'
+		}
+	}
+}

@@ -41,16 +41,15 @@ public class Movement {
   private UUID id;
 
   @Column(name = "movement_date", nullable = false)
-  @Temporal(TemporalType.TIMESTAMP)
   private LocalDateTime movementDate;
 
   @Column(name = "movement_type", nullable = false, length = 20)
   private String movementType;
 
-  @Column(name = "value", nullable = false, columnDefinition = "double default 0.0")
-  private BigDecimal value;
+  @Column(name = "movement_value", nullable = false)
+  private BigDecimal movementValue;
 
-  @Column(name = "balance", nullable = false, columnDefinition = "double default 0.0")
+  @Column(name = "balance", nullable = false)
   private BigDecimal balance;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
