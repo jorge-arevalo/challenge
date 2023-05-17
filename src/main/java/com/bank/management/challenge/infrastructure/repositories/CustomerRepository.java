@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 /**
- * Implementation of the repository interface for the customer entity.
+ * Implementation of the repository interface for the Customer entity.
  *
  * @author jorge-arevalo
  */

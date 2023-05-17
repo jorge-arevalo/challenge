@@ -87,7 +87,7 @@ public class CustomerService implements ICustomerService {
 
   private CustomerDto mapToCustomerDto(Customer customer) {
     return CustomerDto.builder()
-        .id(customer.getId())
+        .id(customer.getId().toString())
         .name(customer.getName())
         .gender(customer.getGender())
         .age(customer.getAge())

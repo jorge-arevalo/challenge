@@ -1,8 +1,8 @@
 package com.bank.management.challenge.infrastructure.rest;
 
-import com.bank.management.challenge.domain.models.input.CustomerInputDto;
-import com.bank.management.challenge.domain.models.output.CustomerDto;
-import com.bank.management.challenge.domain.ports.services.ICustomerService;
+import com.bank.management.challenge.domain.models.input.AccountInputDto;
+import com.bank.management.challenge.domain.models.output.AccountDto;
+import com.bank.management.challenge.domain.ports.services.IAccountService;
 import com.bank.management.challenge.infrastructure.rest.input.FormatInput;
 import com.bank.management.challenge.infrastructure.rest.output.FormatOutput;
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,83 +27,83 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller to manage the customer operations.
+ * Controller to manage the account operations.
  *
  * @author jorge-arevalo
  */
 @RestController
 @Validated
-@RequestMapping("/v1/customers")
+@RequestMapping("/v1/accounts")
 @CrossOrigin
 @Slf4j
 @RequiredArgsConstructor
-@Tag(name = "Customers", description = "Customers operations")
-public class CustomerController {
+@Tag(name = "Accounts", description = "Accounts operations")
+public class AccountController {
 
-  private final ICustomerService customerService;
+  private final IAccountService accountService;
 
   @GetMapping
-  @Operation(description = "Gets all customers")
-  public ResponseEntity<FormatOutput<List<CustomerDto>>> getAllCustomers() {
-    log.info("Getting all customers");
+  @Operation(description = "Gets all accounts")
+  public ResponseEntity<FormatOutput<List<AccountDto>>> getAllAccounts() {
+    log.info("Getting all accounts");
     HttpStatus status = HttpStatus.OK;
-    FormatOutput<List<CustomerDto>> output = new FormatOutput<>();
-    output.setData(customerService.findAll());
+    FormatOutput<List<AccountDto>> output = new FormatOutput<>();
+    output.setData(accountService.findAll());
     output.setCode(String.valueOf(status.value()));
     output.setMessage(status.getReasonPhrase());
     return new ResponseEntity<>(output, status);
   }
 
   @GetMapping("/{id}")
-  @Operation(description = "Gets a customer by id")
-  public ResponseEntity<FormatOutput<CustomerDto>> getCustomerById(@PathVariable("id") String id) {
+  @Operation(description = "Gets an account by id")
+  public ResponseEntity<FormatOutput<AccountDto>> getAccountById(@PathVariable("id") String id) {
     validateId(id);
-    log.info("Getting customer by id: {}", id);
+    log.info("Getting account by id: {}", id);
     HttpStatus status = HttpStatus.OK;
-    FormatOutput<CustomerDto> output = new FormatOutput<>();
-    output.setData(customerService.findById(id));
+    FormatOutput<AccountDto> output = new FormatOutput<>();
+    output.setData(accountService.findById(id));
     output.setCode(String.valueOf(status.value()));
     output.setMessage(status.getReasonPhrase());
     return new ResponseEntity<>(output, status);
   }
 
   @PostMapping
-  @Operation(description = "Registers a new customer")
-  public ResponseEntity<FormatOutput<CustomerDto>> registerCustomer(
-      @Valid @RequestBody FormatInput<CustomerInputDto> customerInput) {
-    log.info("Registering a new customer");
+  @Operation(description = "Registers a new account")
+  public ResponseEntity<FormatOutput<AccountDto>> registerAccount(
+      @Valid @RequestBody FormatInput<AccountInputDto> accountInput) {
+    log.info("Registering a new account");
     HttpStatus status = HttpStatus.CREATED;
-    FormatOutput<CustomerDto> output = new FormatOutput<>();
-    output.setData(customerService.save(customerInput.getData()));
+    FormatOutput<AccountDto> output = new FormatOutput<>();
+    output.setData(accountService.save(accountInput.getData()));
     output.setCode(String.valueOf(status.value()));
     output.setMessage(status.getReasonPhrase());
     return new ResponseEntity<>(output, status);
   }
 
   @PutMapping("/{id}")
-  @Operation(description = "Updates a customer by id")
-  public ResponseEntity<FormatOutput<CustomerDto>> updateCustomer(
+  @Operation(description = "Updates an account by id")
+  public ResponseEntity<FormatOutput<AccountDto>> updateAccount(
       @PathVariable("id") @NotNull String id,
-      @Valid @RequestBody FormatInput<CustomerInputDto> customerInput) {
+      @Valid @RequestBody FormatInput<AccountInputDto> accountInput) {
     validateId(id);
-    log.info("Updating customer by id: {}", id);
+    log.info("Updating account by id: {}", id);
     HttpStatus status = HttpStatus.OK;
-    FormatOutput<CustomerDto> output = new FormatOutput<>();
-    output.setData(customerService.update(id, customerInput.getData()));
+    FormatOutput<AccountDto> output = new FormatOutput<>();
+    output.setData(accountService.update(id, accountInput.getData()));
     output.setCode(String.valueOf(status.value()));
     output.setMessage(status.getReasonPhrase());
     return new ResponseEntity<>(output, status);
   }
 
   @DeleteMapping("/{id}")
-  @Operation(description = "Deletes a customer by id")
-  public ResponseEntity<FormatOutput<CustomerDto>> deleteCustomer(@PathVariable("id") String id) {
+  @Operation(description = "Deletes an account by id")
+  public ResponseEntity<FormatOutput<AccountDto>> deleteAccount(@PathVariable("id") String id) {
     validateId(id);
-    log.info("Deleting customer by id: {}", id);
+    log.info("Deleting account by id: {}", id);
     HttpStatus status = HttpStatus.OK;
-    FormatOutput<CustomerDto> output = new FormatOutput<>();
-    customerService.delete(id);
-    output.setData(CustomerDto.builder().build());
+    FormatOutput<AccountDto> output = new FormatOutput<>();
+    accountService.delete(id);
+    output.setData(AccountDto.builder().build());
     output.setCode(String.valueOf(status.value()));
     output.setMessage(status.getReasonPhrase());
     return new ResponseEntity<>(output, status);
