@@ -16,8 +16,11 @@ spring:
     password: W4dm1n7z3o@#
     driverClassName: org.postgresql.Driver
   jpa:
+    hibernate:
+      ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+    open-in-view: false
   liquibase:
     enabled: false
 spring-doc:

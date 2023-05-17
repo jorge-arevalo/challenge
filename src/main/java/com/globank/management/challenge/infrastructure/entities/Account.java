@@ -1,5 +1,6 @@
 package com.globank.management.challenge.infrastructure.entities;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -42,8 +43,8 @@ public class Account {
   @Column(name = "account_type", nullable = false, length = 20)
   private String accountType;
 
-  @Column(name = "initial_balance", nullable = false, columnDefinition = "double default 0.0")
-  private Double initialBalance;
+  @Column(name = "initial_balance", nullable = false)
+  private BigDecimal initialBalance;
 
   @Column(name = "status", nullable = false, columnDefinition = "boolean default true")
   private Boolean status;
