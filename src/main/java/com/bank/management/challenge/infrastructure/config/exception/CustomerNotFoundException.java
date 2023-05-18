@@ -7,8 +7,8 @@ package com.bank.management.challenge.infrastructure.config.exception;
  */
 public class CustomerNotFoundException extends RuntimeException {
 
-    public CustomerNotFoundException(String message) {
-      super(message);
-    }
+  public CustomerNotFoundException(String message) {
+    super(message);
+  }
 
 }

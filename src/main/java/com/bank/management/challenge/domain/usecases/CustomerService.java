@@ -7,9 +7,9 @@ import com.bank.management.challenge.domain.ports.services.ICustomerService;
 import com.bank.management.challenge.infrastructure.config.exception.GeneralExceptionMessages;
 import com.bank.management.challenge.infrastructure.entities.Customer;
 import com.bank.management.challenge.infrastructure.config.exception.CustomerNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -58,9 +58,7 @@ public class CustomerService implements ICustomerService {
     if (customerList.isEmpty()) {
       throw new CustomerNotFoundException(GeneralExceptionMessages.CUSTOMERS_NOT_FOUND);
     }
-    List<CustomerDto> customerDtoList = new ArrayList<>();
-    customerList.forEach(customer -> customerDtoList.add(mapToCustomerDto(customer)));
-    return customerDtoList;
+    return customerList.stream().map(this::mapToCustomerDto).collect(Collectors.toList());
   }
 
   @Override

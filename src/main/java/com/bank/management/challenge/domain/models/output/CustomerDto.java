@@ -1,5 +1,6 @@
 package com.bank.management.challenge.domain.models.output;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerDto {
 
   private String id;

@@ -1,8 +1,8 @@
 package com.bank.management.challenge.infrastructure.rest;
 
-import com.bank.management.challenge.domain.models.input.AccountInputDto;
-import com.bank.management.challenge.domain.models.output.AccountDto;
-import com.bank.management.challenge.domain.ports.services.IAccountService;
+import com.bank.management.challenge.domain.models.input.MovementInputDto;
+import com.bank.management.challenge.domain.models.output.MovementDto;
+import com.bank.management.challenge.domain.ports.services.IMovementService;
 import com.bank.management.challenge.infrastructure.config.exception.GeneralExceptionMessages;
 import com.bank.management.challenge.infrastructure.rest.input.FormatInput;
 import com.bank.management.challenge.infrastructure.rest.output.FormatOutput;
@@ -28,83 +28,83 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller to manage the account operations.
+ * Controller for manage the movement operations.
  *
  * @author jorge-arevalo
  */
 @RestController
 @Validated
-@RequestMapping("/v1/accounts")
+@RequestMapping("/v1/movements")
 @CrossOrigin
 @Slf4j
 @RequiredArgsConstructor
-@Tag(name = "Accounts", description = "Accounts operations")
-public class AccountController {
+@Tag(name = "Movements", description = "Movements operations")
+public class MovementController {
 
-  private final IAccountService accountService;
+  private final IMovementService movementService;
 
   @GetMapping
-  @Operation(description = "Gets all accounts")
-  public ResponseEntity<FormatOutput<List<AccountDto>>> getAllAccounts() {
-    log.info("Getting all accounts");
+  @Operation(description = "Gets all movements")
+  public ResponseEntity<FormatOutput<List<MovementDto>>> getAllMovements() {
+    log.info("Getting all movements");
     HttpStatus status = HttpStatus.OK;
-    FormatOutput<List<AccountDto>> output = new FormatOutput<>();
-    output.setData(accountService.findAll());
+    FormatOutput<List<MovementDto>> output = new FormatOutput<>();
+    output.setData(movementService.findAll());
     output.setCode(String.valueOf(status.value()));
     output.setMessage(status.getReasonPhrase());
     return new ResponseEntity<>(output, status);
   }
 
   @GetMapping("/{id}")
-  @Operation(description = "Gets an account by id")
-  public ResponseEntity<FormatOutput<AccountDto>> getAccountById(@PathVariable("id") String id) {
+  @Operation(description = "Gets a movement by id")
+  public ResponseEntity<FormatOutput<MovementDto>> getMovementById(@PathVariable("id") String id) {
     validateId(id);
-    log.info("Getting account by id: {}", id);
+    log.info("Getting movement by id: {}", id);
     HttpStatus status = HttpStatus.OK;
-    FormatOutput<AccountDto> output = new FormatOutput<>();
-    output.setData(accountService.findById(id));
+    FormatOutput<MovementDto> output = new FormatOutput<>();
+    output.setData(movementService.findById(id));
     output.setCode(String.valueOf(status.value()));
     output.setMessage(status.getReasonPhrase());
     return new ResponseEntity<>(output, status);
   }
 
   @PostMapping
-  @Operation(description = "Registers a new account")
-  public ResponseEntity<FormatOutput<AccountDto>> registerAccount(
-      @Valid @RequestBody FormatInput<AccountInputDto> accountInput) {
-    log.info("Registering a new account");
+  @Operation(description = "Registers a new movement")
+  public ResponseEntity<FormatOutput<MovementDto>> registerMovement(
+      @Valid @RequestBody FormatInput<MovementInputDto> movementInput) {
+    log.info("Registering a new movement");
     HttpStatus status = HttpStatus.CREATED;
-    FormatOutput<AccountDto> output = new FormatOutput<>();
-    output.setData(accountService.save(accountInput.getData()));
+    FormatOutput<MovementDto> output = new FormatOutput<>();
+    output.setData(movementService.save(movementInput.getData()));
     output.setCode(String.valueOf(status.value()));
     output.setMessage(status.getReasonPhrase());
     return new ResponseEntity<>(output, status);
   }
 
   @PutMapping("/{id}")
-  @Operation(description = "Updates an account by id")
-  public ResponseEntity<FormatOutput<AccountDto>> updateAccount(
+  @Operation(description = "Updates a movement by id")
+  public ResponseEntity<FormatOutput<MovementDto>> updateMovement(
       @PathVariable("id") @NotNull String id,
-      @Valid @RequestBody FormatInput<AccountInputDto> accountInput) {
+      @Valid @RequestBody FormatInput<MovementInputDto> movementInput) {
     validateId(id);
-    log.info("Updating account by id: {}", id);
+    log.info("Updating movement by id: {}", id);
     HttpStatus status = HttpStatus.OK;
-    FormatOutput<AccountDto> output = new FormatOutput<>();
-    output.setData(accountService.update(id, accountInput.getData()));
+    FormatOutput<MovementDto> output = new FormatOutput<>();
+    output.setData(movementService.update(id, movementInput.getData()));
     output.setCode(String.valueOf(status.value()));
     output.setMessage(status.getReasonPhrase());
     return new ResponseEntity<>(output, status);
   }
 
   @DeleteMapping("/{id}")
-  @Operation(description = "Deletes an account by id")
-  public ResponseEntity<FormatOutput<AccountDto>> deleteAccount(@PathVariable("id") String id) {
+  @Operation(description = "Deletes a movement by id")
+  public ResponseEntity<FormatOutput<MovementDto>> deleteMovement(@PathVariable("id") String id) {
     validateId(id);
-    log.info("Deleting account by id: {}", id);
+    log.info("Deleting movement by id: {}", id);
     HttpStatus status = HttpStatus.OK;
-    FormatOutput<AccountDto> output = new FormatOutput<>();
-    accountService.delete(id);
-    output.setData(AccountDto.builder().build());
+    FormatOutput<MovementDto> output = new FormatOutput<>();
+    movementService.delete(id);
+    output.setData(MovementDto.builder().build());
     output.setCode(String.valueOf(status.value()));
     output.setMessage(status.getReasonPhrase());
     return new ResponseEntity<>(output, status);
@@ -115,7 +115,7 @@ public class AccountController {
       log.info("Validating customer id: {}", UUID.fromString(id));
     } catch (IllegalArgumentException iex) {
       log.error(iex.getMessage(), iex);
-      throw new IllegalArgumentException(GeneralExceptionMessages.INVALID_ACCOUNT_ID);
+      throw new IllegalArgumentException(GeneralExceptionMessages.INVALID_MOVEMENT_ID);
     }
   }
 

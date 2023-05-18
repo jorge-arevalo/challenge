@@ -2,6 +2,8 @@ package com.bank.management.challenge.domain.models.input;
 
 import com.bank.management.challenge.infrastructure.config.exception.GeneralExceptionMessages;
 import java.math.BigDecimal;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -9,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Input DTO for the account.
+ * Input DTO for the account entity.
  *
  * @author jorge-arevalo
  */
@@ -26,6 +28,9 @@ public class AccountInputDto {
   private String accountType;
 
   @NotNull(message = GeneralExceptionMessages.ACCOUNT_INITIAL_BALANCE_EMPTY)
+  @DecimalMin(value = "1.0", message = GeneralExceptionMessages.ACCOUNT_INITIAL_BALANCE_MINIMUM)
+  @Digits(integer = 10, fraction = 2, message =
+      GeneralExceptionMessages.ACCOUNT_INITIAL_BALANCE_MAXIMUM_VALUES)
   private BigDecimal initialBalance;
 
   private Boolean status;

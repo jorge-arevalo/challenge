@@ -43,8 +43,8 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
       Exception exception) {
     log.error(exception.toString());
     return buildResponse(
-        exception.getClass().getName(),
-        exception.getMessage(),
+        exception.getClass().getSimpleName(),
+        exception.getCause().getMessage(),
         HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
@@ -57,6 +57,39 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
         String.valueOf(HttpStatus.NOT_FOUND.value()),
         exception.getMessage(),
         HttpStatus.NOT_FOUND);
+  }
+
+  @ExceptionHandler(AccountNotFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public final ResponseEntity<FormatOutput<Object>> handleAccountNotFoundException(
+      AccountNotFoundException exception) {
+    log.error(exception.getMessage(), exception);
+    return buildResponse(
+        String.valueOf(HttpStatus.NOT_FOUND.value()),
+        exception.getMessage(),
+        HttpStatus.NOT_FOUND);
+  }
+
+  @ExceptionHandler(MovementNotFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public final ResponseEntity<FormatOutput<Object>> handleMovementNotFoundException(
+      MovementNotFoundException exception) {
+    log.error(exception.getMessage(), exception);
+    return buildResponse(
+        String.valueOf(HttpStatus.NOT_FOUND.value()),
+        exception.getMessage(),
+        HttpStatus.NOT_FOUND);
+  }
+
+  @ExceptionHandler(InsufficientBalanceException.class)
+  @ResponseStatus(HttpStatus.CONFLICT)
+  public final ResponseEntity<FormatOutput<Object>> handleInsufficientBalanceException(
+      InsufficientBalanceException exception) {
+    log.error(exception.getMessage(), exception);
+    return buildResponse(
+        String.valueOf(HttpStatus.CONFLICT.value()),
+        exception.getMessage(),
+        HttpStatus.CONFLICT);
   }
 
   @Override

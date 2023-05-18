@@ -50,7 +50,7 @@ public class Movement {
   @Column(name = "balance", nullable = false)
   private BigDecimal balance;
 
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "account_id", nullable = false)
   private Account account;
 

@@ -9,9 +9,10 @@ import com.bank.management.challenge.domain.ports.services.IAccountService;
 import com.bank.management.challenge.infrastructure.config.exception.AccountNotFoundException;
 import com.bank.management.challenge.infrastructure.config.exception.GeneralExceptionMessages;
 import com.bank.management.challenge.infrastructure.entities.Account;
-import java.util.ArrayList;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -60,9 +61,7 @@ public class AccountService implements IAccountService {
     if (accountList.isEmpty()) {
       throw new AccountNotFoundException(GeneralExceptionMessages.ACCOUNTS_NOT_FOUND);
     }
-    List<AccountDto> accountDtoList = new ArrayList<>();
-    accountList.forEach(account -> accountDtoList.add(mapToAccountDto(account)));
-    return accountDtoList;
+    return accountList.stream().map(this::mapToAccountDto).collect(Collectors.toList());
   }
 
   @Override
@@ -98,7 +97,7 @@ public class AccountService implements IAccountService {
         .id(account.getId().toString())
         .accountNumber(account.getAccountNumber())
         .accountType(account.getAccountType())
-        .initialBalance(account.getInitialBalance())
+        .initialBalance(account.getInitialBalance().setScale(2, RoundingMode.HALF_UP))
         .status(account.getStatus())
         .customer(customer)
         .build();

@@ -2,13 +2,12 @@ package com.bank.management.challenge.domain.models.output;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.math.BigDecimal;
-import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Output DTO for the account entity.
+ * Output DTO for movement entity.
  *
  * @author jorge-arevalo
  */
@@ -16,13 +15,13 @@ import lombok.Setter;
 @Setter
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AccountDto {
+public class MovementDto {
 
   private String id;
-  private String accountNumber;
-  private String accountType;
-  private BigDecimal initialBalance;
-  private Boolean status;
-  private CustomerDto customer;
+  private String movementDate;
+  private String movementType;
+  private BigDecimal movementValue;
+  private BigDecimal balance;
+  private AccountDto account;
 
 }

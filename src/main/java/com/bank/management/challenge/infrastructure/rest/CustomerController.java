@@ -3,6 +3,7 @@ package com.bank.management.challenge.infrastructure.rest;
 import com.bank.management.challenge.domain.models.input.CustomerInputDto;
 import com.bank.management.challenge.domain.models.output.CustomerDto;
 import com.bank.management.challenge.domain.ports.services.ICustomerService;
+import com.bank.management.challenge.infrastructure.config.exception.GeneralExceptionMessages;
 import com.bank.management.challenge.infrastructure.rest.input.FormatInput;
 import com.bank.management.challenge.infrastructure.rest.output.FormatOutput;
 import io.swagger.v3.oas.annotations.Operation;
@@ -114,7 +115,7 @@ public class CustomerController {
       log.info("Validating customer id: {}", UUID.fromString(id));
     } catch (IllegalArgumentException iex) {
       log.error(iex.getMessage(), iex);
-      throw new IllegalArgumentException("Invalid customer id");
+      throw new IllegalArgumentException(GeneralExceptionMessages.INVALID_CUSTOMER_ID);
     }
   }
 

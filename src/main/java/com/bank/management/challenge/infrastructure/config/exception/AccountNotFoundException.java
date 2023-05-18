@@ -1,7 +1,7 @@
 package com.bank.management.challenge.infrastructure.config.exception;
 
 /**
- * Code description
+ * Exception for account not found.
  *
  * @author jorge-arevalo
  */
