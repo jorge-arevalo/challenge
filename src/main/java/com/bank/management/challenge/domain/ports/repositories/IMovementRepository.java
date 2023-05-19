@@ -19,7 +19,8 @@ public interface IMovementRepository {
 
   List<Movement> findAll();
 
-  List<Movement> findByMovementDateBetween(LocalDateTime initialDate, LocalDateTime finalDate);
+  List<Movement> findByMovementDateBetween(LocalDateTime initialDate, LocalDateTime finalDate,
+      String customerName);
 
   void delete(Movement movement);
 

@@ -38,8 +38,8 @@ public class MovementRepository implements IMovementRepository {
 
   @Override
   public List<Movement> findByMovementDateBetween(LocalDateTime initialDate,
-      LocalDateTime finalDate) {
-    return jpaMovement.findByMovementDateBetween(initialDate, finalDate);
+      LocalDateTime finalDate, String customerName) {
+    return jpaMovement.findByMovementDateBetween(initialDate, finalDate, customerName);
   }
 
   @Override

@@ -28,7 +28,7 @@ public class AccountInputDto {
   private String accountType;
 
   @NotNull(message = GeneralExceptionMessages.ACCOUNT_INITIAL_BALANCE_EMPTY)
-  @DecimalMin(value = "1.0", message = GeneralExceptionMessages.ACCOUNT_INITIAL_BALANCE_MINIMUM)
+  @DecimalMin(value = "0.0", message = GeneralExceptionMessages.ACCOUNT_INITIAL_BALANCE_MINIMUM)
   @Digits(integer = 10, fraction = 2, message =
       GeneralExceptionMessages.ACCOUNT_INITIAL_BALANCE_MAXIMUM_VALUES)
   private BigDecimal initialBalance;

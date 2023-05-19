@@ -44,7 +44,7 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
     log.error(exception.toString());
     return buildResponse(
         exception.getClass().getSimpleName(),
-        exception.getCause().getMessage(),
+        exception.getMessage(),
         HttpStatus.INTERNAL_SERVER_ERROR);
   }
 

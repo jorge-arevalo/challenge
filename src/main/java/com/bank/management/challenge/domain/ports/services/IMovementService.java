@@ -17,8 +17,6 @@ public interface IMovementService {
 
   List<MovementDto> findAll();
 
-  List<MovementDto> findByMovementDateBetween(String initialDate, String finalDate);
-
   MovementDto update(String id, MovementInputDto movementInput);
 
   void delete(String id);

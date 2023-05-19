@@ -71,17 +71,6 @@ public class MovementService implements IMovementService {
   }
 
   @Override
-  public List<MovementDto> findByMovementDateBetween(String initialDate, String finalDate) {
-    var startDate = LocalDateTime.parse(initialDate, DateTimeFormatter.ISO_DATE_TIME);
-    var endDate = LocalDateTime.parse(finalDate, DateTimeFormatter.ISO_DATE_TIME);
-    var movementList = movementRepository.findByMovementDateBetween(startDate, endDate);
-    if (movementList.isEmpty()) {
-      throw new MovementNotFoundException(GeneralExceptionMessages.MOVEMENTS_NOT_FOUND);
-    }
-    return movementList.stream().map(this::mapToMovementDto).collect(Collectors.toList());
-  }
-
-  @Override
   public MovementDto update(String id, MovementInputDto movementInput) {
     var movement = movementRepository.findById(UUID.fromString(id)).orElseThrow(
         () -> new MovementNotFoundException(GeneralExceptionMessages.MOVEMENT_NOT_FOUND));
