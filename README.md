@@ -4,8 +4,8 @@ Demo for Bank Management Project
 
 ### Reference Documentation
 
-* [Challenge Architecture](https://drive.google.com/file/d/1YOM15vSXDmzqwzZls_xU1oq5d37UZmC_/view?usp=sharing)
-* [Challenge Model](https://drive.google.com/file/d/11iwyBInpRQCNPGLzUO8m8igDloDPxoo9/view?usp=sharing)
+* [Challenge Architecture](https://drive.google.com/file/d/1qE1sNU-ZBi66sdndCpqI-7meZXoQ8Udc/view?usp=sharing)
+* [Challenge Model](https://drive.google.com/file/d/1EsedaNDloNC6giCZtY5h-j__ptSUSyLL/view?usp=sharing)
 * [Challenge Swagger Documentation](http://localhost:8088/bank-challenge/swagger-ui/index.html)
 
 ### Guides
@@ -16,4 +16,4 @@ The following guides illustrate how to use some features concretely:
 ### Additional Links
 These additional references should also help you:
 
-* [Project database](https://drive.google.com/file/d/1PVOCfemgbc9DjJRFQD2bEO45uarJUz4X/view?usp=sharing)
+* [Project database](https://drive.google.com/file/d/1ylVBKHhm5O6tE66KZmPE-45ffA_AFNsw/view?usp=sharing)
