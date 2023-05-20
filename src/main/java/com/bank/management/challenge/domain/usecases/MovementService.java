@@ -119,7 +119,7 @@ public class MovementService implements IMovementService {
       } else {
         throw new InsufficientBalanceException(GeneralExceptionMessages.INSUFFICIENT_BALANCE);
       }
-    } else if (movement.getMovementType().equals(MovementConstants.MOVEMENT_TYPE_CREDIT)) {
+    } else {
       movement.setBalance(
           movement.getAccount().getInitialBalance().add(movement.getMovementValue()));
     }
@@ -130,7 +130,7 @@ public class MovementService implements IMovementService {
     if (movement.getMovementType().equals(MovementConstants.MOVEMENT_TYPE_DEBIT)) {
       movement.setBalance(
           movement.getAccount().getInitialBalance().add(movement.getMovementValue()));
-    } else if (movement.getMovementType().equals(MovementConstants.MOVEMENT_TYPE_CREDIT)) {
+    } else {
       movement.setBalance(
           movement.getAccount().getInitialBalance().subtract(movement.getMovementValue()));
     }

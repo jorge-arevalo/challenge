@@ -7,8 +7,8 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Input DTO for the account entity.
@@ -16,7 +16,7 @@ import lombok.Setter;
  * @author jorge-arevalo
  */
 @Getter
-@Setter
+@Builder
 public class AccountInputDto {
 
   @NotEmpty(message = GeneralExceptionMessages.ACCOUNT_NUMBER_EMPTY)

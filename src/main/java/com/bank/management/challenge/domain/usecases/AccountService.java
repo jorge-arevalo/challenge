@@ -7,6 +7,7 @@ import com.bank.management.challenge.domain.ports.repositories.IAccountRepositor
 import com.bank.management.challenge.domain.ports.repositories.ICustomerRepository;
 import com.bank.management.challenge.domain.ports.services.IAccountService;
 import com.bank.management.challenge.infrastructure.config.exception.AccountNotFoundException;
+import com.bank.management.challenge.infrastructure.config.exception.CustomerNotFoundException;
 import com.bank.management.challenge.infrastructure.config.exception.GeneralExceptionMessages;
 import com.bank.management.challenge.infrastructure.entities.Account;
 import java.math.RoundingMode;
@@ -35,7 +36,7 @@ public class AccountService implements IAccountService {
   @Override
   public AccountDto save(AccountInputDto accountInput) {
     var customer = customerRepository.findByName(accountInput.getCustomerName()).orElseThrow(
-        () -> new AccountNotFoundException(GeneralExceptionMessages.CUSTOMER_NOT_FOUND));
+        () -> new CustomerNotFoundException(GeneralExceptionMessages.CUSTOMER_NOT_FOUND));
     var account = Account.builder()
         .accountNumber(accountInput.getAccountNumber())
         .accountType(accountInput.getAccountType())

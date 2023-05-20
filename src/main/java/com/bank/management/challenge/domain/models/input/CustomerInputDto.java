@@ -3,8 +3,8 @@ package com.bank.management.challenge.domain.models.input;
 import com.bank.management.challenge.infrastructure.config.exception.GeneralExceptionMessages;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Input DTO for the customer entity.
@@ -12,7 +12,7 @@ import lombok.Setter;
  * @author jorge-arevalo
  */
 @Getter
-@Setter
+@Builder
 public class CustomerInputDto {
 
   @NotEmpty(message = GeneralExceptionMessages.CUSTOMER_NAME_EMPTY)

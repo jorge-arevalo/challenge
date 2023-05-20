@@ -18,8 +18,6 @@ public interface IAccountRepository {
 
   Optional<Account> findByAccountNumber(String accountNumber);
 
-  List<Account> findByCustomerId(UUID customerId);
-
   List<Account> findAll();
 
   void delete(Account account);

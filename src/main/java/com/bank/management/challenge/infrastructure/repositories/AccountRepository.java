@@ -36,11 +36,6 @@ public class AccountRepository implements IAccountRepository {
   }
 
   @Override
-  public List<Account> findByCustomerId(UUID customerId) {
-    return jpaAccount.findByCustomerId(customerId);
-  }
-
-  @Override
   public List<Account> findAll() {
     return jpaAccount.findAll();
   }
