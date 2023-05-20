@@ -17,3 +17,4 @@ The following guides illustrate how to use some features concretely:
 These additional references should also help you:
 
 * [Project database](https://drive.google.com/file/d/1ylVBKHhm5O6tE66KZmPE-45ffA_AFNsw/view?usp=sharing)
+* [Postman Collection](https://drive.google.com/file/d/1L69Mxro6q6Tprl3IhySiNMCk-d-cdp0Z/view?usp=sharing)

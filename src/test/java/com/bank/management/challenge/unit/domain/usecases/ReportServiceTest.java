@@ -49,8 +49,6 @@ class ReportServiceTest {
 
   private Movement movement;
 
-  private UUID movementId;
-
   private String initialDate;
 
   private String finalDate;
@@ -62,7 +60,7 @@ class ReportServiceTest {
     initialDate = "01/01/2021";
     finalDate = "31/01/2021";
     customerName = "Customer Name";
-    movementId = UUID.randomUUID();
+    UUID movementId = UUID.randomUUID();
 
     var customer = Customer.builder()
         .id(UUID.randomUUID())
