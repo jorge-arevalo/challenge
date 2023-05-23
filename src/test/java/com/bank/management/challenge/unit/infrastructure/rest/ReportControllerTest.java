@@ -68,6 +68,8 @@ class ReportControllerTest {
     Mockito.when(reportService.findByMovementDateBetween(initialDate, finalDate, customerName))
         .thenReturn(Collections.singletonList(reportDto));
     var response = reportController.findMovementByDate(initialDate, finalDate, customerName);
+    log.info("Test Response: {}",
+        Objects.requireNonNull(response.getBody()).getData().get(0).toString());
     Assertions.assertEquals(HttpStatus.OK.value(), response.getStatusCodeValue());
     Assertions.assertEquals(1, Objects.requireNonNull(response.getBody()).getData().size());
     Assertions.assertEquals(reportDto, Objects.requireNonNull(response.getBody()).getData().get(0));

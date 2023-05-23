@@ -8,7 +8,6 @@ import com.bank.management.challenge.infrastructure.rest.CustomerController;
 import com.bank.management.challenge.infrastructure.rest.input.FormatInput;
 import java.util.Collections;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
@@ -87,6 +86,7 @@ class CustomerControllerTest {
   void getCustomerByIdTest() {
     Mockito.when(customerService.findById(customerId)).thenReturn(customerDto);
     var response = customerController.getCustomerById(customerId);
+    log.info("Test Response: {}", Objects.requireNonNull(response.getBody()).getData().toString());
     Assertions.assertEquals(HttpStatus.OK.value(), response.getStatusCodeValue());
     Assertions.assertEquals(customerId,
         Objects.requireNonNull(response.getBody()).getData().getId());

@@ -81,6 +81,7 @@ class MovementControllerTest {
   void getMovementByIdTest() {
     Mockito.when(movementService.findById(movementId)).thenReturn(movementDto);
     var response = movementController.getMovementById(movementId);
+    log.info("Test Response: {}", Objects.requireNonNull(response.getBody()).getData().toString());
     Assertions.assertEquals(HttpStatus.OK.value(), response.getStatusCodeValue());
     Assertions.assertEquals(movementId,
         Objects.requireNonNull(response.getBody()).getData().getId());

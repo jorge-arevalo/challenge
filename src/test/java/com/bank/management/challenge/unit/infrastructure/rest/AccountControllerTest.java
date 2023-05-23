@@ -82,7 +82,12 @@ class AccountControllerTest {
   void getAccountByIdTest() {
     Mockito.when(accountService.findById(accountId)).thenReturn(accountDto);
     var response = accountController.getAccountById(accountId);
+    log.info("Test Response: {}", Objects.requireNonNull(response.getBody()).getData().toString());
     Assertions.assertEquals(HttpStatus.OK.value(), response.getStatusCodeValue());
+    Assertions.assertEquals(String.valueOf(HttpStatus.OK.value()),
+        Objects.requireNonNull(response.getBody()).getCode());
+    Assertions.assertEquals(HttpStatus.OK.getReasonPhrase(),
+        Objects.requireNonNull(response.getBody()).getMessage());
     Assertions.assertEquals(accountId,
         Objects.requireNonNull(response.getBody()).getData().getId());
   }

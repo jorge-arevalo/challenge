@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Output DTO for reports.
@@ -12,6 +13,7 @@ import lombok.Getter;
  */
 @Getter
 @Builder
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ReportDto {
 

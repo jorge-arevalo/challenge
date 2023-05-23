@@ -34,8 +34,10 @@ public class GeneralExceptionMessages {
       "El teléfono del cliente no puede estar vacío.";
   public static final String CUSTOMER_PHONE_NUMBER_SIZE =
       "El teléfono del cliente debe tener entre 5 y 20 caracteres.";
-  public static final String CUSTOMER_PASSWORD_EMPTY =
+  public static final String CUSTOMER_KEY_EMPTY =
       "La contraseña del cliente no puede estar vacía.";
+  public static final String CUSTOMER_KEY_SIZE =
+      "\"La contraseña del cliente debe tener entre 4 y 50 caracteres";
   public static final String CUSTOMER_NOT_FOUND =
       "El cliente no existe en la base de datos.";
   public static final String CUSTOMERS_NOT_FOUND =
@@ -92,10 +94,6 @@ public class GeneralExceptionMessages {
       "El saldo de la cuenta no es suficiente para realizar el movimiento.";
   public static final String INVALID_MOVEMENT_ID =
       "El identificador del movimiento no es válido.";
-
-  // Miscellaneous error messages
-  public static final String DATA_INTEGRITY_VIOLATION =
-      "Se ha presentado un error de integridad en la base de datos.";
 
   private GeneralExceptionMessages() {
     // Default constructor

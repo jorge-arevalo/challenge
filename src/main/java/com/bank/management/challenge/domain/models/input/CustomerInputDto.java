@@ -37,8 +37,8 @@ public class CustomerInputDto {
   @Size(min = 5, max = 20, message = GeneralExceptionMessages.CUSTOMER_PHONE_NUMBER_SIZE)
   private String phoneNumber;
 
-  @NotEmpty(message = GeneralExceptionMessages.CUSTOMER_PASSWORD_EMPTY)
-  @Size(min = 4, max = 50, message = GeneralExceptionMessages.CUSTOMER_PASSWORD_EMPTY)
+  @NotEmpty(message = GeneralExceptionMessages.CUSTOMER_KEY_EMPTY)
+  @Size(min = 4, max = 50, message = GeneralExceptionMessages.CUSTOMER_KEY_SIZE)
   private String password;
 
   private Boolean status;

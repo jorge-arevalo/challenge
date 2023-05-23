@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Output DTO for movement entity.
@@ -12,8 +12,8 @@ import lombok.Setter;
  * @author jorge-arevalo
  */
 @Getter
-@Setter
 @Builder
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MovementDto {
 
